@@ -20,8 +20,8 @@ pred=X @ w
 loss=torch.mean((y_train-pred)**2)
 loss.backward()
 grad=w.grad
-H=2*(X.T @ X)/n
-w_new=w-torch.linalg.inv(H) @ grad
+H=2*(X.T @ X)/n #Hessian
+w_new=w-torch.linalg.inv(H) @ grad #一步到
 w0, w1=w_new[0].item(), w_new[1].item()
 y_train_pred=w0+w1*x_train
 y_test_pred=w0+w1*x_test
