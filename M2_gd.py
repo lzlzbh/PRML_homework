@@ -6,7 +6,7 @@ x_train = torch.tensor(train_df['x'].values, dtype=torch.float32)
 y_train = torch.tensor(train_df['y_complex'].values, dtype=torch.float32)
 x_test = torch.tensor(test_df['x_new'].values, dtype=torch.float32)
 y_test = torch.tensor(test_df['y_new_complex'].values, dtype=torch.float32)
-#提取数据
+#从csv取出来数据，并整成pytorch张量
 def evaluate(truth, pred):
     rmse=torch.sqrt(torch.mean((truth-pred)**2)).item()
     ss_res=torch.sum((truth-pred)**2)
