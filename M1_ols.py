@@ -11,7 +11,8 @@ x_train=torch.tensor(train_df[x_train_col].values, dtype=torch.float32)
 y_train=torch.tensor(train_df[y_train_col].values, dtype=torch.float32)
 x_test=torch.tensor(test_df[x_test_col].values, dtype=torch.float32)
 y_test=torch.tensor(test_df[y_test_col].values, dtype=torch.float32)
-def evaluate(truth, pred):
+#从csv取出来数据，并整成pytorch张量
+def evaluate(truth, pred):#评价指标公式
     rmse=torch.sqrt(torch.mean((truth-pred)**2)).item()
     ss_res=torch.sum((truth-pred)**2)
     ss_tot=torch.sum((truth-torch.mean(truth))**2)
@@ -19,7 +20,7 @@ def evaluate(truth, pred):
     return rmse, r2
 n=len(x_train)
 X=torch.stack([torch.ones(n), x_train], dim=1)
-w=torch.linalg.inv(X.T @ X) @ X.T @ y_train
+w=torch.linalg.inv(X.T @ X) @ X.T @ y_train #线性回归，最小化均方误差
 w0, w1=w[0].item(), w[1].item()
 y_train_pred=w0+w1*x_train
 y_test_pred=w0+w1*x_test
