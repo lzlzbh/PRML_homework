@@ -16,7 +16,7 @@ def evaluate(truth, pred):
 bandwidths=[0.05, 0.1, 0.15, 0.2, 0.25, 0.35, 0.5, 0.75, 1.0, 1.25, 1.5, 2.0]
 print(f"{'bandwidth':<12} {'train_rmse':<12} {'train_r2':<12} {'test_rmse':<12} {'test_r2':<12}")
 print("-"*60)
-for bw in bandwidths:
+for bw in bandwidths:#遍历不同bandwidth
     dist_train=x_train[:, None]-x_train[None, :]
     W_train=torch.exp(-0.5*(dist_train/bw)**2)
     W_train=W_train/W_train.sum(dim=1, keepdim=True)
