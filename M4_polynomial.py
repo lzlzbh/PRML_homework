@@ -16,7 +16,7 @@ def evaluate(truth, pred):
 max_degree=20
 print(f"{'degree':<8} {'train_rmse':<12} {'train_r2':<12} {'test_rmse':<12} {'test_r2':<12}")
 print("-"*56)
-for d in range(1, max_degree+1):
+for d in range(1, max_degree+1):#不同阶数多项式
     X_train=torch.stack([x_train**i for i in range(d+1)], dim=1)
     X_test=torch.stack([x_test**i for i in range(d+1)], dim=1)
     w=torch.linalg.inv(X_train.T @ X_train) @ X_train.T @ y_train
