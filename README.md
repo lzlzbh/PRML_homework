@@ -1,1 +1,3 @@
 # PRML_homework
+run_models.py为主程序，各种超参数已经配置好，运行可直接得到报告中的结果
+validate_best_params.py为寻找最佳超参数程序
